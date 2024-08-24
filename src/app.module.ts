@@ -13,12 +13,12 @@ import { Report } from './reports/report.entity';
       type: 'sqlite',
       database: './db.sqlite',
       entities: [User, Report],
-      synchronize: true, //для автомат створення таблиць
+      synchronize: false,
     }),
     UsersModule,
     ReportsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
