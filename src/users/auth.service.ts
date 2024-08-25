@@ -6,7 +6,7 @@ import { promisify } from 'util';
 const scrypt = promisify(_scrypt);
 
 @Injectable()
-export class Authservice {
+export class AuthService {
   constructor(private usersService: UsersService) {}
 
   async signup(email: string, password: string) {
