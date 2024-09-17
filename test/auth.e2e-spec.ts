@@ -27,4 +27,24 @@ describe('Authentication(e2e)', () => {
         expect(email).toEqual(email);
       });
   });
+
+  it('signup as a new user then get the currently logged in user', async () => {
+    const email = 'mdvknfv@gmail.com';
+
+    const res = await request(app.getHttpServer())
+      .post('/auth/signup')
+      .send({ email, password: 'vkfvfd' })
+      .expect(201);
+
+    const cookie = res.get('Set-Cookie');
+
+    expect(cookie).toBeDefined();
+
+    const { body } = await request(app.getHttpServer())
+      .get('/auth/user')
+      .set('Cookie', cookie as string[])
+      .expect(200);
+
+    expect(body.email).toEqual(email);
+  });
 });

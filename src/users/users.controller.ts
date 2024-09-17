@@ -43,7 +43,7 @@ export class UsersController {
     return user;
   }
 
-  @Get('user')
+  @Get('/user')
   @UseGuards(AuthGuard)
   getUser(@CurrentUser() user: User) {
     return user;
